@@ -26,7 +26,7 @@ result = retriever.retrieve_by_subjects(your_data)
 
 ### 批量处理
 ```bash
-python multi_run_final.py
+python run_rag.py
 ```
 
 修改脚本中的输入输出路径：
@@ -45,6 +45,6 @@ output_file = './data/output.json'
 
 - `top_k`: 检索数量（默认5）
 - `text_weight`: 文本权重（默认0.6）
-- `gpu_id`: GPU设备ID（None为CPU）
+
 
 

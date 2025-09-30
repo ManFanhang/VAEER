@@ -27,22 +27,19 @@ def main():
         kg_path='./senticnet_clean.py',
         model_name='clip-ViT-B-32',
         cache_dir='./cache',
-        gpu_id=0  # 设置为None禁用GPU，或设置具体GPU ID
+        gpu_id=0  
     )
     
     # 结果存储
     processed_data = []
 
-    # 处理数据，使用 tqdm 显示进度条
     for entry in tqdm(data, desc="Processing Entries"):
         result = retriever.retrieve_by_subjects(entry)
         
-        # 去掉 similarity 字段
         for category in result:
             for item in result[category]:
                 item.pop('similarity', None)
         
-        # 合并结果
         merged_entry = {
             'filename': entry['filename'],
             'keywords': entry['keywords'],

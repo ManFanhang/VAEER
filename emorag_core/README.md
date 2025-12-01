@@ -18,7 +18,7 @@ retriever = MultiModalKGRetriever(
     kg_path='./senticnet_clean.py',
     model_name='clip-ViT-B-32',
     cache_dir='./cache',
-    gpu_id=0  # 设置为None使用CPU
+    gpu_id=0 
 )
 
 result = retriever.retrieve_by_subjects(your_data)

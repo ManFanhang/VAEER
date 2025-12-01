@@ -5,24 +5,18 @@ from multi_emorag import MultiModalKGRetriever
 from tqdm import tqdm
 
 def main():
-    # 配置路径（请根据实际情况修改）
-    input_file = './data/input_data.json'  # 输入JSON文件路径
-    output_file = './data/output_rag.json'  # 输出文件路径
+    input_file = './data/input_data.json'  
+    output_file = './data/output_rag.json'  
     
-    # 检查输入文件是否存在
     if not os.path.exists(input_file):
-        print(f"输入文件不存在: {input_file}")
-        print("请修改 input_file 变量为正确的路径")
+        print(f"file not exist: {input_file}")
         return
     
-    # 创建输出目录
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     
-    # 加载 JSON 数据
     with open(input_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    # 初始化检索器
     retriever = MultiModalKGRetriever(
         kg_path='./senticnet_clean.py',
         model_name='clip-ViT-B-32',
@@ -30,7 +24,6 @@ def main():
         gpu_id=0  
     )
     
-    # 结果存储
     processed_data = []
 
     for entry in tqdm(data, desc="Processing Entries"):
@@ -47,7 +40,6 @@ def main():
         }
         processed_data.append(merged_entry)
     
-    # 保存结果
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(processed_data, f, ensure_ascii=False, indent=4)
     

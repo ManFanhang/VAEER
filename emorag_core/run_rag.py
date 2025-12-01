@@ -43,8 +43,8 @@ def main():
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(processed_data, f, ensure_ascii=False, indent=4)
     
-    print(f"处理完成！结果已保存到: {output_file}")
-    print(f"共处理了 {len(processed_data)} 条数据")
+    print(f"finished and saved to: {output_file}")
+    print(f"Total data: {len(processed_data)}")
 
 if __name__ == "__main__":
     main()
